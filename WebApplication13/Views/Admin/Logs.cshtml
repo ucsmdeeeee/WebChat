@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Viewer</title>
+    <style>
+        /* Стили как в вашем предыдущем примере */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f0ff;
+            color: #4b0082;
+        }
+        header {
+            background-color: #6a0dad;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+        .filter-container input,
+        .filter-container select,
+        .filter-container button {
+            padding: 10px;
+            border: 1px solid #d3c3f3;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .filter-container button {
+            background-color: #6a0dad;
+            color: white;
+            cursor: pointer;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #6a0dad;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>Log Viewer</header>
+    <div class="container">
+        <div class="filter-container">
+            <input type="date" id="startDate" placeholder="Start Date">
+            <input type="date" id="endDate" placeholder="End Date">
+            <select id="groupBy">
+                <option value="">None</option>
+                <option value="ip">IP</option>
+                <option value="date">Date</option>
+            </select>
+            <button onclick="filterLogs()">Filter Logs</button>
+        </div>
+        <div id="logsContainer">
+            <!-- Logs table will be rendered here -->
+        </div>
+        <div class="pagination">
+            <button onclick="changePage(-1)">Previous</button>
+            <span id="currentPage">1</span>
+            <button onclick="changePage(1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const token = localStorage.getItem("token"); // Получаем JWT токен из localStorage.
+
+
+        async function filterLogs() {
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            const groupBy = document.getElementById("groupBy").value;
+
+            let url = `/api/log/filter?`;
+
+            if (startDate) url += `startDate=${startDate}&`;
+            if (endDate) url += `endDate=${endDate}&`;
+            if (groupBy) url += `groupBy=${groupBy}`;
+            url = url.replace(/&$/, ""); // Удаляем последний "&", если он есть
+
+            try {
+                const response = await fetch(url, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+                });
+
+                if (!response.ok) {
+                    console.error("Error fetching logs:", await response.text());
+                    document.getElementById("logsContainer").innerHTML = "<p>Failed to fetch logs.</p>";
+                    return;
+                }
+
+                const data = await response.json();
+                console.log("Fetched Data:", data); // Для отладки
+                renderLogs(data);
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("logsContainer").innerHTML = "<p>An error occurred while fetching logs.</p>";
+            }
+        }
+
+
+
+
+        function renderLogs(data) {
+            const container = document.getElementById("logsContainer");
+            container.innerHTML = ""; // Очищаем контейнер
+
+            if (!data || data.length === 0) {
+                container.innerHTML = "<p>No logs found.</p>";
+                return;
+            }
+
+            const table = document.createElement("table");
+            table.classList.add("log-table");
+
+            // Создаём заголовок таблицы
+            const headerRow = document.createElement("tr");
+            const keys = Object.keys(data[0]); // Получаем ключи из первого объекта
+
+            keys.forEach((key) => {
+                const th = document.createElement("th");
+                th.textContent = key.charAt(0).toUpperCase() + key.slice(1); // Форматируем заголовки
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            // Создаём строки таблицы
+            data.forEach((row) => {
+                const tr = document.createElement("tr");
+                keys.forEach((key) => {
+                    const td = document.createElement("td");
+                    td.textContent = row[key];
+                    tr.appendChild(td);
+                });
+                table.appendChild(tr);
+            });
+
+            container.appendChild(table);
+        }
+
+
+        function changePage(delta) {
+            currentPage += delta;
+            if (currentPage < 1) currentPage = 1;
+            document.getElementById("currentPage").textContent = currentPage;
+            filterLogs();
+        }
+    </script>
+</body>
+</html>

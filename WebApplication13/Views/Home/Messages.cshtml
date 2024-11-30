@@ -1,0 +1,734 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f0ff; /* Фон страницы */
+            color: #4b0082; /* Основной текст */
+        }
+
+        h1, h3 {
+            color: #6a0dad; /* Темный фиолетовый */
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #6a0dad; /* Темно-фиолетовая кнопка */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            button:hover {
+                background-color: #4b0082; /* Более тёмный при наведении */
+            }
+
+        select, textarea {
+            border: 1px solid #d3c3f3; /* Светло-фиолетовая рамка */
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 60px;
+            resize: none;
+            margin-top: 10px;
+        }
+
+        /* Центрирование заголовка */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        /* Контейнеры */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10; /* Убедимся, что кнопка не скрывается */
+        }
+
+        .chat-container {
+            display: flex;
+            height: 60vh; /* Уменьшенная высота */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        /* Левая панель (Список чатов) */
+        .chat-list, .user-list {
+            width: 20%;
+            background-color: #eae0ff; /* Светло-фиолетовый фон */
+            border-right: 1px solid #d3c3f3;
+            padding: 20px;
+            position: relative;
+        }
+
+        .user-list {
+            border-left: 1px solid #d3c3f3;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+            .chat-list h3, .user-list h3 {
+                margin-bottom: 10px;
+            }
+
+            .user-list select {
+                margin-bottom: 15px;
+            }
+
+            .user-list .start-chat {
+                width: 100%; /* Полная ширина кнопки */
+            }
+
+        /* Центральная панель (Сообщения) */
+        .messages-panel {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+        }
+
+        .messages {
+    flex-grow: 1;
+    border: 1px solid #d3c3f3;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background-color: #faf8ff;
+    word-wrap: break-word; /* Перенос длинных слов */
+    word-break: break-word; /* Перенос без пробелов */
+}
+
+        /* Стили сообщений */
+        .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: #eae0ff;
+        }
+
+            .message.sender {
+                background-color: #d6b3ff; /* Цвет сообщений отправителя */
+                text-align: right;
+            }
+
+            .message.receiver {
+                background-color: #eae0ff; /* Цвет сообщений получателя */
+            }
+
+        /* Стили для списка файлов */
+    .file-list-container {
+        max-height: 200px; /* Максимальная высота контейнера */
+        overflow-y: auto; /* Добавляем вертикальную прокрутку */
+        border: 1px solid #d3c3f3;
+        border-radius: 4px;
+        background-color: #faf8ff;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border-bottom: 1px solid #eae0ff;
+        font-size: 14px;
+    }
+
+    .file-item:last-child {
+        border-bottom: none; /* Убираем линию у последнего элемента */
+    }
+
+    .file-name {
+        flex: 1;
+        white-space: nowrap; /* Убираем перенос текста */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Добавляем многоточие, если текст слишком длинный */
+        margin-right: 10px;
+    }
+
+    .file-size {
+        margin-right: 10px;
+        color: #6a0dad;
+    }
+
+    .download-button {
+        background-color: #6a0dad;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .download-button:hover {
+        background-color: #4b0082;
+    }
+
+        /* Контейнер для ввода сообщения и загрузки файлов */
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        .message-input {
+            flex: 3; /* Поле ввода сообщения занимает большую часть */
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px; /* Отступ сверху от поля ввода сообщения */
+        }
+
+        .upload-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Расстояние между элементами */
+            margin-top: 10px; /* Отступ сверху */
+        }
+
+        .choose-file-button,
+        .upload-button {
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+            .choose-file-button:hover,
+            .upload-button:hover {
+                background-color: #4b0082;
+            }
+
+        .file-name {
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+
+        .upload-progress {
+            font-size: 12px;
+            color: #6a0dad;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Заголовок -->
+    <div class="header">
+        <h1>Choose a user to chat with</h1>
+    </div>
+
+    <!-- Основной блок -->
+    <div class="container">
+        <div class="chat-container">
+            <!-- Список чатов -->
+            <div class="chat-list">
+                <h3>Chats</h3>
+                <select id="chatSelect" onchange="loadMessages(this.value)">
+                    <!-- Сюда будут добавляться чаты -->
+                </select>
+                <div>
+                    <h3>Files</h3>
+                    <div class="file-list-container" id="fileList">
+                        <!-- Файлы будут добавляться динамически -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Центральная панель (Сообщения) -->
+            <div class="messages-panel">
+                <h3>Messages</h3>
+                <div id="messages" class="messages">
+                    <!-- Сообщения будут отображаться здесь -->
+                </div>
+
+                <!-- Поле ввода сообщения -->
+                <textarea id="messageContent" placeholder="Type your message"></textarea>
+                <br>
+                <button onclick="sendMessage()">Send Message</button>
+                <!-- Контейнер загрузки файлов -->
+                <div class="upload-container">
+                    <input type="file" id="fileInput" style="display:none;" />
+                    <button class="choose-file-button">Choose File</button>
+                    <span id="fileName" class="file-name">No file selected</span>
+                    <button class="upload-button" onclick="uploadFile()">Upload</button>
+                    <span id="progress" class="upload-progress">Progress: 0%</span>
+                </div>
+
+
+                <!-- Кнопка отправки сообщения -->
+                
+            </div>
+
+
+            <!-- Список пользователей -->
+            <div class="user-list">
+                <button class="logout" onclick="logout()">Logout</button>
+                <div>
+                    <h3>Users</h3>
+                    <select id="userSelect">
+                        <!-- Сюда будут добавляться пользователи -->
+                    </select>
+                </div>
+                <button class="start-chat" onclick="createChat()">Start Chat</button>
+            </div>
+        </div>
+        <div id="adminActions" style="text-align: center; margin-top: 20px; display: none;">
+            <button id="viewLogs" onclick="viewLogs()">View Logs</button>
+        </div>
+    </div>
+
+    <!-- Подключаем библиотеку для декодирования JWT -->
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        if (token) {
+            localStorage.setItem('token', token);
+        } 
+
+
+        // Функция для получения роли пользователя из токена
+        function getUserRoleFromToken() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                const decodedToken = jwt_decode(token);
+                console.log("Decoded Token:", decodedToken); // Логируем расшифрованный токен
+                return decodedToken.role; // Роль пользователя
+            }
+            return null;
+        }
+        function showFileName() {
+            const fileInput = document.getElementById("fileInput");
+            const fileNameDisplay = document.getElementById("selectedFileName");
+
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = "No file selected";
+            }
+        }
+
+        // Отобразить кнопку для логов, если пользователь администратор
+        function showAdminActions() {
+            const role = getUserRoleFromToken();
+            console.log(`User role: ${role}`);
+            if (role === 'Admin') { // Проверяем, является ли пользователь администратором
+                const adminActions = document.getElementById('adminActions');
+                adminActions.style.display = 'block'; // Делаем блок видимым
+            }
+        }
+
+        // Функция для перехода к логам
+        function viewLogs() {
+            window.location.href = '/admin/logs'; // Перенаправляем на страницу с логами
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUsers();
+            loadChats();
+            showAdminActions(); // Проверяем и отображаем кнопки для админа
+        });
+
+        // Функция для получения userId из токена
+        function getUserIdFromToken() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                try {
+                    const decodedToken = jwt_decode(token); // Декодируем токен
+                    console.log("Decoded Token:", decodedToken);
+                    return decodedToken.email; // Получаем userId
+                } catch (error) {
+                    console.error("Invalid token:", error);
+                    localStorage.removeItem('token'); // Удаляем некорректный токен
+                }
+            }
+            return null; // Если токен не найден или некорректен
+        }
+
+        // Устанавливаем userId
+        const userId = getUserIdFromToken();
+        if (!userId) {
+            alert("You are not logged in.");
+            window.location.href = "/"; // Редиректим на страницу логина
+        } else {
+            console.log(`Logged in as userId: ${userId}`);
+        }
+        document.querySelector('.choose-file-button').addEventListener('click', () => {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.onchange = (event) => {
+                const file = event.target.files[0];
+                document.getElementById('fileName').textContent = file ? file.name : 'No file selected';
+            };
+            fileInput.click();
+        });
+
+        async function uploadFile() {
+            const fileInput = document.getElementById("fileInput");
+            if (!fileInput || !fileInput.files.length) {
+                alert("Please select a file.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const chatId = document.getElementById("chatSelect").value;
+
+            if (!chatId) {
+                alert("Please select a chat.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("chatId", chatId);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/api/chat/uploadFile", true);
+
+            // Отображение прогресса загрузки
+            xhr.upload.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    const percentComplete = (event.loaded / event.total) * 100;
+                    document.getElementById("progress").textContent = `Progress: ${percentComplete.toFixed(2)}%`;
+                }
+            };
+
+            xhr.onload = async () => {
+                if (xhr.status === 200) {
+                    const result = JSON.parse(xhr.responseText);
+                    alert(result.message);
+                    document.getElementById("progress").textContent = "Progress: 100%";
+                    loadChatFiles(chatId); // Обновляем список файлов
+                } else {
+                    const error = JSON.parse(xhr.responseText);
+                    alert(`Error: ${error.message}`);
+                }
+            };
+
+            xhr.onerror = () => {
+                alert("Error uploading file.");
+            };
+
+            xhr.send(formData);
+        }
+
+
+
+
+
+        async function loadChatFiles(chatId) {
+            if (!chatId) return;
+
+            try {
+                const response = await fetch(`/api/message/getChatFiles/${chatId}`);
+                const files = await response.json();
+
+                const fileList = document.getElementById("fileList");
+                fileList.innerHTML = ""; // Очищаем список перед добавлением новых файлов
+
+                files.forEach(file => {
+                    const listItem = document.createElement("div");
+                    listItem.className = "file-item";
+
+                    // Имя файла
+                    const fileName = document.createElement("div");
+                    fileName.className = "file-name";
+                    fileName.textContent = file.fileName || "Unknown File"; // Если имя отсутствует
+
+                    // Размер файла в МБ
+                    const fileSize = document.createElement("div");
+                    fileSize.className = "file-size";
+                    const sizeInMB = (file.size / (1024 * 1024)).toFixed(2); // Перевод байтов в МБ
+                    fileSize.textContent = `${sizeInMB} MB`;
+
+                    // Кнопка загрузки
+                    const downloadButton = document.createElement("button");
+                    downloadButton.className = "download-button";
+                    downloadButton.textContent = "Download";
+                    downloadButton.onclick = () => downloadFile(file.id);
+
+                    listItem.appendChild(fileName);
+                    listItem.appendChild(fileSize);
+                    listItem.appendChild(downloadButton);
+
+                    fileList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error("Error loading chat files:", error);
+            }
+        }
+
+        function downloadFile(fileId) {
+            if (!fileId) {
+                console.error("Invalid file ID passed to downloadFile:", fileId);
+                return;
+            }
+
+            console.log("Downloading file with ID:", fileId);
+            window.location.href = `/api/chat/downloadFile/${fileId}`;
+        }
+
+
+        // Загрузка списка пользователей для выбора
+        async function loadUsers() {
+            try {
+                const response = await fetch(`/api/user/all/${userId}`);
+                const users = await response.json();
+
+                const userSelect = document.getElementById('userSelect');
+                userSelect.innerHTML = '<option value="">-- Select a user --</option>';
+
+                users.forEach(user => {
+                    const option = document.createElement('option');
+                    option.value = user.email; // Используем email
+                    option.textContent = user.username;
+                    userSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error loading users:", error);
+            }
+        }
+
+
+        // Создание чата с выбранным пользователем
+        async function createChat() {
+            const receiverEmail = document.getElementById('userSelect').value;
+
+            if (!receiverEmail) {
+                alert("Please select a user to start a chat.");
+                return;
+            }
+
+            const requestBody = {
+                user1Email: userId, // Используем email текущего пользователя
+                user2Email: receiverEmail
+            };
+
+            try {
+                const response = await fetch('/api/chat/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    loadChats();
+                } else {
+                    alert(result.message || "Failed to create chat.");
+                }
+            } catch (error) {
+                console.error("Error creating chat:", error);
+            }
+        }
+
+
+
+        // Загрузка чатов для текущего пользователя
+        async function loadChats() {
+            try {
+                const response = await fetch(`/api/chat/chats/${userId}`);
+                const chats = await response.json();
+
+                const chatSelect = document.getElementById('chatSelect');
+                chatSelect.innerHTML = '<option value="">-- Select a chat --</option>';
+
+                chats.forEach(chat => {
+                    const option = document.createElement('option');
+                    option.value = chat.chatId;
+                    option.textContent = `Chat with ${chat.receiverName} (${chat.receiverEmail})`;
+                    chatSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error loading chats:", error);
+            }
+        }
+
+
+        // Загрузка сообщений для выбранного чата
+        async function loadMessages(chatId) {
+            if (!chatId) return;
+            try {
+                const response = await fetch(`/api/message/getMessages/${chatId}`);
+                const messages = await response.json();
+
+                console.log("Messages loaded:", messages);
+
+                const messageContainer = document.getElementById('messages');
+                messageContainer.innerHTML = '';
+
+                messages.forEach(message => {
+                    const messageElement = document.createElement('div');
+                    messageElement.textContent = `Sender: ${message.senderName} | Message: ${message.message}`;
+                    messageContainer.appendChild(messageElement);
+                });
+                loadChatFiles(chatId)
+            } catch (error) {
+                console.error("Error loading messages:", error);
+            }
+        }
+
+        // Отправка сообщения в чат
+        async function sendMessage() {
+            const chatId = document.getElementById('chatSelect').value;
+            const content = document.getElementById('messageContent').value;
+            const receiverEmail = document.getElementById('userSelect').value;
+
+            if (!chatId || !content.trim()) {
+                alert("Please select a chat and enter a message.");
+                return;
+            }
+
+            const requestBody = {
+                chatId,
+                senderEmail: userId, // Текущий пользователь
+                receiverEmail,
+                content
+            };
+
+            try {
+                const response = await fetch('/api/chat/sendMessage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    document.getElementById('messageContent').value = '';
+                    loadMessages(chatId);
+                } else {
+                    alert(result.message || "Failed to send message.");
+                }
+            } catch (error) {
+                console.error("Error sending message:", error);
+            }
+        }
+
+
+        // Функция для выхода
+        function logout() {
+            localStorage.removeItem('token');  // Удаляем токен из localStorage
+            window.location.href = '/';         // Перенаправляем на главную страницу
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUsers();
+            loadChats();
+        });
+
+        async function fetchWithAuth(url, options = {}) {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('No token found. Please log in.');
+                window.location.href = '/';
+                return;
+            }
+
+            const headers = {
+                ...options.headers,
+                Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
+                'Content-Type': 'application/json'
+            };
+
+            return fetch(url, { ...options, headers });
+        }
+
+        document.querySelector('.choose-file-button').addEventListener('click', () => {
+            let fileInput = document.getElementById("fileInput");
+            if (!fileInput) {
+                fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.id = 'fileInput'; // Убедитесь, что id установлен
+                fileInput.style.display = 'none'; // Скрываем
+                document.body.appendChild(fileInput);
+            }
+            fileInput.onchange = (event) => {
+                const file = event.target.files[0];
+                document.getElementById('fileName').textContent = file ? file.name : 'No file selected';
+            };
+            fileInput.click();
+        });
+
+
+
+        // Пример: Автоматическая загрузка данных после авторизации
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                fetchWithAuth('/admin/logs')
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error(`Failed to load profile: ${response.status}`);
+                        }
+                    })
+                    .then(data => console.log('User Profile:', data))
+                    .catch(error => console.error('Error loading profile:', error));
+            }
+        });
+    </script>
+</body>
+</html>
