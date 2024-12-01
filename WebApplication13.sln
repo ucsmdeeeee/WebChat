@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogsConsole", "LogsConsole\
 		{C3DCF2B7-B3E9-4F82-A2D9-BB873F4D4894} = {C3DCF2B7-B3E9-4F82-A2D9-BB873F4D4894}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{6BC2C45B-FF1C-4257-BCE6-0A26FA433598}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{8280D7DE-6D99-42BB-A203-CA7976CE8265}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8280D7DE-6D99-42BB-A203-CA7976CE8265}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8280D7DE-6D99-42BB-A203-CA7976CE8265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC2C45B-FF1C-4257-BCE6-0A26FA433598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC2C45B-FF1C-4257-BCE6-0A26FA433598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC2C45B-FF1C-4257-BCE6-0A26FA433598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC2C45B-FF1C-4257-BCE6-0A26FA433598}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,11 @@
+﻿{
+  "allure": {
+    "directory": "TestResult/allure-results",
+    "plugins": [ "allure-plugin-code-coverage" ],
+    "links": {
+      "tms": "https://example.com/tms/{}/",
+      "issue": "https://example.com/issue/{}/"
+
+    }
+  }
+}

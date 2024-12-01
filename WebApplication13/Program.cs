@@ -114,13 +114,6 @@ builder.Services.AddAuthentication(options =>
 });
 
 
-
-
-Console.WriteLine($"JWT Key: {builder.Configuration["Jwt:Key"]}");
-Console.WriteLine($"JWT Issuer: {builder.Configuration["Jwt:Issuer"]}");
-Console.WriteLine($"JWT Audience: {builder.Configuration["Jwt:Audience"]}");
-
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>

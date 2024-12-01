@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Viewer</title>
+    <title>Логи</title>
     <style>
         /* Стили как в вашем предыдущем примере */
         body {
@@ -72,30 +72,24 @@
     </style>
 </head>
 <body>
-    <header>Log Viewer</header>
+    <header>Логи</header>
     <div class="container">
         <div class="filter-container">
-            <input type="date" id="startDate" placeholder="Start Date">
-            <input type="date" id="endDate" placeholder="End Date">
+            <input type="date" id="startDate" placeholder="Начало">
+            <input type="date" id="endDate" placeholder="Конец">
             <select id="groupBy">
-                <option value="">None</option>
+                <option value="">Нет</option>
                 <option value="ip">IP</option>
-                <option value="date">Date</option>
+                <option value="date">Дата</option>
             </select>
-            <button onclick="filterLogs()">Filter Logs</button>
+            <button onclick="filterLogs()">Фильтр Логов</button>
         </div>
         <div id="logsContainer">
             <!-- Logs table will be rendered here -->
         </div>
-        <div class="pagination">
-            <button onclick="changePage(-1)">Previous</button>
-            <span id="currentPage">1</span>
-            <button onclick="changePage(1)">Next</button>
-        </div>
     </div>
 
     <script>
-        let currentPage = 1;
         const token = localStorage.getItem("token"); // Получаем JWT токен из localStorage.
 
 

@@ -263,7 +263,7 @@
 <body>
     <!-- Заголовок -->
     <div class="header">
-        <h1>Choose a user to chat with</h1>
+        <h1>Чат</h1>
     </div>
 
     <!-- Основной блок -->
@@ -271,12 +271,12 @@
         <div class="chat-container">
             <!-- Список чатов -->
             <div class="chat-list">
-                <h3>Chats</h3>
+                <h3>Чаты</h3>
                 <select id="chatSelect" onchange="loadMessages(this.value)">
                     <!-- Сюда будут добавляться чаты -->
                 </select>
                 <div>
-                    <h3>Files</h3>
+                    <h3>Файлы</h3>
                     <div class="file-list-container" id="fileList">
                         <!-- Файлы будут добавляться динамически -->
                     </div>
@@ -287,22 +287,22 @@
 
             <!-- Центральная панель (Сообщения) -->
             <div class="messages-panel">
-                <h3>Messages</h3>
+                <h3>Сообщения</h3>
                 <div id="messages" class="messages">
                     <!-- Сообщения будут отображаться здесь -->
                 </div>
 
                 <!-- Поле ввода сообщения -->
-                <textarea id="messageContent" placeholder="Type your message"></textarea>
+                <textarea id="messageContent" placeholder="Пишите"></textarea>
                 <br>
-                <button onclick="sendMessage()">Send Message</button>
+                <button onclick="sendMessage()">Отправить сообщение</button>
                 <!-- Контейнер загрузки файлов -->
                 <div class="upload-container">
                     <input type="file" id="fileInput" style="display:none;" />
-                    <button class="choose-file-button">Choose File</button>
-                    <span id="fileName" class="file-name">No file selected</span>
-                    <button class="upload-button" onclick="uploadFile()">Upload</button>
-                    <span id="progress" class="upload-progress">Progress: 0%</span>
+                    <button class="choose-file-button">Выбрать файл</button>
+                    <span id="fileName" class="file-name">Файл не выбран</span>
+                    <button class="upload-button" onclick="uploadFile()">Отправить</button>
+                    <span id="progress" class="upload-progress">Прогресс: 0%</span>
                 </div>
 
 
@@ -313,18 +313,18 @@
 
             <!-- Список пользователей -->
             <div class="user-list">
-                <button class="logout" onclick="logout()">Logout</button>
+                <button class="logout" onclick="logout()">Выйти</button>
                 <div>
-                    <h3>Users</h3>
+                    <h3>Пользователи</h3>
                     <select id="userSelect">
                         <!-- Сюда будут добавляться пользователи -->
                     </select>
                 </div>
-                <button class="start-chat" onclick="createChat()">Start Chat</button>
+                <button class="start-chat" onclick="createChat()">Создать чат</button>
             </div>
         </div>
         <div id="adminActions" style="text-align: center; margin-top: 20px; display: none;">
-            <button id="viewLogs" onclick="viewLogs()">View Logs</button>
+            <button id="viewLogs" onclick="viewLogs()">Логи</button>
         </div>
     </div>
 
@@ -530,7 +530,7 @@
                 const users = await response.json();
 
                 const userSelect = document.getElementById('userSelect');
-                userSelect.innerHTML = '<option value="">-- Select a user --</option>';
+                userSelect.innerHTML = '<option value="">-- Выберите пользователя --</option>';
 
                 users.forEach(user => {
                     const option = document.createElement('option');
@@ -549,7 +549,7 @@
             const receiverEmail = document.getElementById('userSelect').value;
 
             if (!receiverEmail) {
-                alert("Please select a user to start a chat.");
+                alert("Выберете пользователя с которым хотите начать чат");
                 return;
             }
 
@@ -588,12 +588,12 @@
                 const chats = await response.json();
 
                 const chatSelect = document.getElementById('chatSelect');
-                chatSelect.innerHTML = '<option value="">-- Select a chat --</option>';
+                chatSelect.innerHTML = '<option value="">-- Выберите чат --</option>';
 
                 chats.forEach(chat => {
                     const option = document.createElement('option');
                     option.value = chat.chatId;
-                    option.textContent = `Chat with ${chat.receiverName} (${chat.receiverEmail})`;
+                    option.textContent = `Чат с ${chat.receiverName} (${chat.receiverEmail})`;
                     chatSelect.appendChild(option);
                 });
             } catch (error) {
@@ -616,7 +616,7 @@
 
                 messages.forEach(message => {
                     const messageElement = document.createElement('div');
-                    messageElement.textContent = `Sender: ${message.senderName} | Message: ${message.message}`;
+                    messageElement.textContent = `Отправитель: ${message.senderName} | Сообщение: ${message.message}`;
                     messageContainer.appendChild(messageElement);
                 });
                 loadChatFiles(chatId)
@@ -632,7 +632,7 @@
             const receiverEmail = document.getElementById('userSelect').value;
 
             if (!chatId || !content.trim()) {
-                alert("Please select a chat and enter a message.");
+                alert("Сначала выберите чат");
                 return;
             }
 

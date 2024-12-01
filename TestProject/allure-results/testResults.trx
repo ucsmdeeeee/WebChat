@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="576aebf7-d0c4-441f-9c7d-31ae0ea8df67" name="lozik@DESKTOP-1QVT81V 2024-12-02 02:21:41" runUser="DESKTOP-1QVT81V\lozik" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-12-02T02:21:41.1025995+03:00" queuing="2024-12-02T02:21:41.1025998+03:00" start="2024-12-02T02:21:21.8198805+03:00" finish="2024-12-02T02:22:51.0465535+03:00" />
+  <TestSettings name="default" id="1ee68f9f-8a6e-4f29-a38e-c9eb28644dcd">
+    <Deployment runDeploymentRoot="lozik_DESKTOP-1QVT81V_2024-12-02_02_21_41" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="fb7fa8e4-5958-4bf4-a892-96d065e01e07" testId="187719cf-9c50-c511-bf59-16b1478ff5a3" testName="MessagesTests.Test_CreateChat" computerName="DESKTOP-1QVT81V" duration="00:00:20.5092846" startTime="2024-12-02T02:21:45.2165343+03:00" endTime="2024-12-02T02:21:45.2165344+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fb7fa8e4-5958-4bf4-a892-96d065e01e07" />
+    <UnitTestResult executionId="5640e5d9-78c8-4088-a713-b0c309e54b88" testId="440aff4e-f4ef-1276-3f77-397373a78e88" testName="RegistrationTests.Test_UserRegistration" computerName="DESKTOP-1QVT81V" duration="00:00:16.4462041" startTime="2024-12-02T02:21:41.1534729+03:00" endTime="2024-12-02T02:21:41.1534734+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5640e5d9-78c8-4088-a713-b0c309e54b88" />
+    <UnitTestResult executionId="52b202bf-88c6-44f4-8e8b-7e3937362d0d" testId="c812e7aa-208c-fbfb-56d5-b6d87c33de44" testName="LoginTests.Test_UserLogin" computerName="DESKTOP-1QVT81V" duration="00:00:16.2881642" startTime="2024-12-02T02:21:41.0148597+03:00" endTime="2024-12-02T02:21:41.0148858+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="52b202bf-88c6-44f4-8e8b-7e3937362d0d" />
+    <UnitTestResult executionId="c71edcea-0285-4603-aa2b-942f8c0f0988" testId="8ec52c9b-c631-9562-78dd-60ec33b764c5" testName="LoginTests.Test_UserLoginFalsePassword" computerName="DESKTOP-1QVT81V" duration="00:00:12.1566689" startTime="2024-12-02T02:21:53.2287855+03:00" endTime="2024-12-02T02:21:53.2287857+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c71edcea-0285-4603-aa2b-942f8c0f0988" />
+    <UnitTestResult executionId="3e88c66d-a222-48d7-b08e-d8848393832f" testId="4b07f632-54d5-e571-ba70-f7d4944018bb" testName="MessagesTests.Test_CreateChatUserNull" computerName="DESKTOP-1QVT81V" duration="00:00:15.8373346" startTime="2024-12-02T02:22:01.0614360+03:00" endTime="2024-12-02T02:22:01.0614363+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e88c66d-a222-48d7-b08e-d8848393832f" />
+    <UnitTestResult executionId="cb17b2d6-4dae-4db7-b8e5-79edc83acad6" testId="8dc7d917-1303-87cf-1269-c94b66a4ab5b" testName="MessagesTests.Test_SendMessageNoChat" computerName="DESKTOP-1QVT81V" duration="00:00:14.8189160" startTime="2024-12-02T02:22:15.8849407+03:00" endTime="2024-12-02T02:22:15.8849410+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb17b2d6-4dae-4db7-b8e5-79edc83acad6" />
+    <UnitTestResult executionId="689f0eb0-bbcc-40ee-ba9e-1ea707120af0" testId="adbd298f-498d-a5ca-0c44-ec09abfc14d5" testName="LoginTests.Test_UserLoginFalseEmail" computerName="DESKTOP-1QVT81V" duration="00:00:11.3738319" startTime="2024-12-02T02:22:04.6078041+03:00" endTime="2024-12-02T02:22:04.6078048+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="689f0eb0-bbcc-40ee-ba9e-1ea707120af0" />
+    <UnitTestResult executionId="df1842ed-edbe-430c-bd15-19ed50e2ea22" testId="5c976453-ae84-564c-1543-0ecce9008b6e" testName="RegistrationTests.Test_UserRegistrationEmailAlreadyUse" computerName="DESKTOP-1QVT81V" duration="00:00:11.3464724" startTime="2024-12-02T02:22:04.4239747+03:00" endTime="2024-12-02T02:22:04.4239751+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df1842ed-edbe-430c-bd15-19ed50e2ea22" />
+    <UnitTestResult executionId="7097401a-9943-486c-b41d-0e015f306e4f" testId="324780c3-a63b-9bbf-7535-06341c46bb5e" testName="LogoutTests.Test_UserRegistration" computerName="DESKTOP-1QVT81V" duration="00:00:24.0754121" startTime="2024-12-02T02:21:48.7824105+03:00" endTime="2024-12-02T02:21:48.7824109+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7097401a-9943-486c-b41d-0e015f306e4f" />
+    <UnitTestResult executionId="14ac22f2-140b-47ec-b893-bdf3b620a3a7" testId="d041f27b-c3fb-9600-cf86-520a1a7e9149" testName="MessagesTests.Test_CreateChatAlredyCreate" computerName="DESKTOP-1QVT81V" duration="00:00:15.2556883" startTime="2024-12-02T02:22:31.1469208+03:00" endTime="2024-12-02T02:22:31.1469216+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="14ac22f2-140b-47ec-b893-bdf3b620a3a7" />
+    <UnitTestResult executionId="e80deefd-2323-46fe-a7a8-afb1c4a8cb57" testId="21b8a7c0-f413-90ef-8bee-4ed5ab88de3c" testName="RegistrationTests.Test_UserRegistrationInvalidConfirmPassword" computerName="DESKTOP-1QVT81V" duration="00:00:11.9136636" startTime="2024-12-02T02:21:53.0722559+03:00" endTime="2024-12-02T02:21:53.0722562+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e80deefd-2323-46fe-a7a8-afb1c4a8cb57" />
+    <UnitTestResult executionId="483dba16-c580-499e-8754-1f3b69ef4775" testId="0d695ffe-7eb6-bab9-bbe2-6f227ae91e40" testName="MessagesTests.Test_SendMessage" computerName="DESKTOP-1QVT81V" duration="00:00:19.7914546" startTime="2024-12-02T02:22:50.9448638+03:00" endTime="2024-12-02T02:22:50.9448642+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="483dba16-c580-499e-8754-1f3b69ef4775" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="MessagesTests.Test_SendMessage" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="0d695ffe-7eb6-bab9-bbe2-6f227ae91e40">
+      <Execution id="483dba16-c580-499e-8754-1f3b69ef4775" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MessagesTests" name="Test_SendMessage" />
+    </UnitTest>
+    <UnitTest name="LoginTests.Test_UserLoginFalseEmail" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="adbd298f-498d-a5ca-0c44-ec09abfc14d5">
+      <Execution id="689f0eb0-bbcc-40ee-ba9e-1ea707120af0" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="LoginTests" name="Test_UserLoginFalseEmail" />
+    </UnitTest>
+    <UnitTest name="RegistrationTests.Test_UserRegistrationEmailAlreadyUse" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="5c976453-ae84-564c-1543-0ecce9008b6e">
+      <Execution id="df1842ed-edbe-430c-bd15-19ed50e2ea22" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="RegistrationTests" name="Test_UserRegistrationEmailAlreadyUse" />
+    </UnitTest>
+    <UnitTest name="LoginTests.Test_UserLogin" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="c812e7aa-208c-fbfb-56d5-b6d87c33de44">
+      <Execution id="52b202bf-88c6-44f4-8e8b-7e3937362d0d" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="LoginTests" name="Test_UserLogin" />
+    </UnitTest>
+    <UnitTest name="MessagesTests.Test_CreateChat" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="187719cf-9c50-c511-bf59-16b1478ff5a3">
+      <Execution id="fb7fa8e4-5958-4bf4-a892-96d065e01e07" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MessagesTests" name="Test_CreateChat" />
+    </UnitTest>
+    <UnitTest name="RegistrationTests.Test_UserRegistrationInvalidConfirmPassword" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="21b8a7c0-f413-90ef-8bee-4ed5ab88de3c">
+      <Execution id="e80deefd-2323-46fe-a7a8-afb1c4a8cb57" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="RegistrationTests" name="Test_UserRegistrationInvalidConfirmPassword" />
+    </UnitTest>
+    <UnitTest name="LogoutTests.Test_UserRegistration" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="324780c3-a63b-9bbf-7535-06341c46bb5e">
+      <Execution id="7097401a-9943-486c-b41d-0e015f306e4f" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="LogoutTests" name="Test_UserRegistration" />
+    </UnitTest>
+    <UnitTest name="RegistrationTests.Test_UserRegistration" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="440aff4e-f4ef-1276-3f77-397373a78e88">
+      <Execution id="5640e5d9-78c8-4088-a713-b0c309e54b88" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="RegistrationTests" name="Test_UserRegistration" />
+    </UnitTest>
+    <UnitTest name="MessagesTests.Test_SendMessageNoChat" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="8dc7d917-1303-87cf-1269-c94b66a4ab5b">
+      <Execution id="cb17b2d6-4dae-4db7-b8e5-79edc83acad6" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MessagesTests" name="Test_SendMessageNoChat" />
+    </UnitTest>
+    <UnitTest name="LoginTests.Test_UserLoginFalsePassword" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="8ec52c9b-c631-9562-78dd-60ec33b764c5">
+      <Execution id="c71edcea-0285-4603-aa2b-942f8c0f0988" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="LoginTests" name="Test_UserLoginFalsePassword" />
+    </UnitTest>
+    <UnitTest name="MessagesTests.Test_CreateChatAlredyCreate" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="d041f27b-c3fb-9600-cf86-520a1a7e9149">
+      <Execution id="14ac22f2-140b-47ec-b893-bdf3b620a3a7" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MessagesTests" name="Test_CreateChatAlredyCreate" />
+    </UnitTest>
+    <UnitTest name="MessagesTests.Test_CreateChatUserNull" storage="c:\users\lozik\source\repos\webapplication13\testproject\bin\debug\net8.0\testproject.dll" id="4b07f632-54d5-e571-ba70-f7d4944018bb">
+      <Execution id="3e88c66d-a222-48d7-b08e-d8848393832f" />
+      <TestMethod codeBase="C:\Users\lozik\source\repos\WebApplication13\TestProject\bin\Debug\net8.0\TestProject.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MessagesTests" name="Test_CreateChatUserNull" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="187719cf-9c50-c511-bf59-16b1478ff5a3" executionId="fb7fa8e4-5958-4bf4-a892-96d065e01e07" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="440aff4e-f4ef-1276-3f77-397373a78e88" executionId="5640e5d9-78c8-4088-a713-b0c309e54b88" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c812e7aa-208c-fbfb-56d5-b6d87c33de44" executionId="52b202bf-88c6-44f4-8e8b-7e3937362d0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8ec52c9b-c631-9562-78dd-60ec33b764c5" executionId="c71edcea-0285-4603-aa2b-942f8c0f0988" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4b07f632-54d5-e571-ba70-f7d4944018bb" executionId="3e88c66d-a222-48d7-b08e-d8848393832f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8dc7d917-1303-87cf-1269-c94b66a4ab5b" executionId="cb17b2d6-4dae-4db7-b8e5-79edc83acad6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="adbd298f-498d-a5ca-0c44-ec09abfc14d5" executionId="689f0eb0-bbcc-40ee-ba9e-1ea707120af0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c976453-ae84-564c-1543-0ecce9008b6e" executionId="df1842ed-edbe-430c-bd15-19ed50e2ea22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="324780c3-a63b-9bbf-7535-06341c46bb5e" executionId="7097401a-9943-486c-b41d-0e015f306e4f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d041f27b-c3fb-9600-cf86-520a1a7e9149" executionId="14ac22f2-140b-47ec-b893-bdf3b620a3a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21b8a7c0-f413-90ef-8bee-4ed5ab88de3c" executionId="e80deefd-2323-46fe-a7a8-afb1c4a8cb57" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d695ffe-7eb6-bab9-bbe2-6f227ae91e40" executionId="483dba16-c580-499e-8754-1f3b69ef4775" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Список результатов" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Все загруженные результаты" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="12" executed="12" passed="12" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 8.0.0)&#xD;
+[xUnit.net 00:00:01.19] XunitTestRunner's Void .ctor(Xunit.Abstractions.ITest, Xunit.Sdk.IMessageBus, System.Type, System.Object[], System.Reflection.MethodInfo, System.Object[], System.String, System.Collections.Generic.IReadOnlyList`1[Xunit.Sdk.BeforeAfterTestAttribute], Xunit.Sdk.ExceptionAggregator, System.Threading.CancellationTokenSource) has been patched&#xD;
+[xUnit.net 00:00:01.22] Allure reporter enabled&#xD;
+[xUnit.net 00:00:01.27] Patching is skipped: Xunit is already patched&#xD;
+[xUnit.net 00:00:01.27] Allure reporter enabled&#xD;
+[xUnit.net 00:00:01.31]   Discovering: TestProject&#xD;
+[xUnit.net 00:00:01.36]   Discovered:  TestProject&#xD;
+[xUnit.net 00:00:01.36]   Starting:    TestProject&#xD;
+[xUnit.net 00:01:27.72]   Finished:    TestProject&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

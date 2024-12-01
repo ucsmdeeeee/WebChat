@@ -52,7 +52,7 @@ namespace WebApplication13.Controllers
 
             if (user1 == null || user2 == null)
             {
-                return NotFound(new { message = "Один из пользователей не существует." });
+                return NotFound(new { message = "Один из пользователей не существует" });
             }
 
             var existingChat = await _context.Chats
@@ -62,7 +62,7 @@ namespace WebApplication13.Controllers
 
             if (existingChat != null)
             {
-                return Conflict(new { message = "Чат уже существует." });
+                return Conflict(new { message = "Чат уже существует" });
             }
 
             var chat = new Chat

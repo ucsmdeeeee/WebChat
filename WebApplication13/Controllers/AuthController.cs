@@ -29,7 +29,7 @@ public class AuthController : ControllerBase
             if (_context.Users.Any(u => u.Email == register.Email))
             {
 
-                return BadRequest(new { message = "Email is already taken." });
+                return BadRequest(new { message = "Пользователь с данным email уже зарегестрирован" });
             }
             var user = new User
             {
@@ -41,7 +41,7 @@ public class AuthController : ControllerBase
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "User registered successfully." });
+            return Ok(new { message = "Вы успешно зарегистрировались" });
         }
         catch (Exception ex)
         {
@@ -55,7 +55,7 @@ public class AuthController : ControllerBase
         var user = _context.Users.SingleOrDefault(u => u.Email == login.Email);
 
         if (user == null || !BCrypt.Net.BCrypt.Verify(login.PasswordHash, user.PasswordHash))
-            return Unauthorized(new { message = "Invalid email or password." });
+            return Unauthorized(new { message = "Неправильный email или пароль" });
 
         var token = GenerateJwtToken(user);
         return Ok(new { token });
@@ -68,16 +68,6 @@ public class AuthController : ControllerBase
             RedirectUri = Url.Action(nameof(HandleOAuthCallback))
         };
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
-    }
-
-    [HttpGet("signin-github")]
-    public IActionResult SignInWithGitHub()
-    {
-        var properties = new AuthenticationProperties
-        {
-            RedirectUri = Url.Action(nameof(HandleOAuthCallback))
-        };
-        return Challenge(properties, "GitHub");
     }
 
     [HttpGet("oauth-callback")]
