@@ -45,7 +45,7 @@ WebApplication13/
     ```bash
     dotnet ef database update
     ```
-3. Установите зависимости через npm (если требуется):
+3. Установите зависимости через npm:
     ```bash
     npm install
     ```
